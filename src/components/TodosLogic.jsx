@@ -1,29 +1,25 @@
+import { useState } from "react";
 import InputTodo from "./InputTodo";
 import TodosList from "./TodosList";
 const TodosLogic = () => {
-  const todos = [
-    {
-      id: 1,
-      title: "Setup development environment",
-      completed: true,
-    },
-    {
-      id: 2,
-      title: "Develop website and add content",
+  const [todos, setTodos] = useState([
+    // ...
+  ]);
+
+  const addTodoItem = (title) => {
+    const newTodo = {
+      id: 4,
+      title: title,
       completed: false,
-    },
-    {
-      id: 3,
-      title: "Deploy to live server",
-      completed: false,
-    },
-  ];
+    };
+    setTodos([...todos, newTodo]);
+  };
   return (
     <div>
-      <InputTodo />
+      <InputTodo addTodoItem={addTodoItem} />
       <ul>
         {todos.map((todo) => (
-          <li>{todo.title}</li>
+          <li key={todo.id}>{todo.title}</li>
         ))}
       </ul>
     </div>
